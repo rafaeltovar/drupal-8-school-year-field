@@ -110,7 +110,7 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
     $output['start_year'] = array(
       '#type' => 'textfield',
       '#title' => t('Start year'),
-      '#default_value' => $this->currentYear(),
+      '#default_value' => "",
     );
     return $output;
   }
