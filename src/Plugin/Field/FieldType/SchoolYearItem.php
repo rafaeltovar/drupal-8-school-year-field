@@ -99,7 +99,7 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
    */
   public static function defaultFieldSettings() {
     return array(
-      'start_year' => 1,
+      'start_year' => self::currentYear(),
     ) + parent::defaultFieldSettings();
   }
 
@@ -108,37 +108,37 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
    */
   public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
     $output['start_year'] = array(
-      '#type' => 'int',
+      '#type' => 'textfield',
       '#title' => t('Start year'),
       '#default_value' => $this->currentYear(),
     );
     return $output;
   }
 
-  private function currentYear() : int {
+  private static function currentYear() : int {
     return intval(date("Y"));
   }
 
-  /**
-   * Returns an array of toppings assigned to the burrito.
-   *
-   * @return array
-   *   An associative array of all toppings assigned to the burrito.
-   */
-  public function getToppings() {
+  // /**
+  //  * Returns an array of toppings assigned to the burrito.
+  //  *
+  //  * @return array
+  //  *   An associative array of all toppings assigned to the burrito.
+  //  */
+  // public function getToppings() {
 
-    module_load_include('inc', 'burrito_maker');
+  //   module_load_include('inc', 'burrito_maker');
 
-    $output = array();
+  //   $output = array();
 
-    foreach (burrito_maker_get_toppings() as $topping_key => $topping_name) {
-      if ($this->$topping_key) {
-        $output[$topping_key] = $topping_name;
-      }
-    }
+  //   foreach (burrito_maker_get_toppings() as $topping_key => $topping_name) {
+  //     if ($this->$topping_key) {
+  //       $output[$topping_key] = $topping_name;
+  //     }
+  //   }
 
-    return $output;
+  //   return $output;
 
-  }
+  // }
 
 }
