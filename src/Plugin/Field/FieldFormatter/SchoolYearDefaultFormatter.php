@@ -83,84 +83,42 @@ class SchoolYearDefaultFormatter extends FormatterBase {
   // /**
   //  * {@inheritdoc}
   //  */
-  // public function viewElements(FieldItemListInterface $items, $langcode) {
+  public function viewElements(FieldItemListInterface $items, $langcode) {
 
-  //   $output = array();
+    $output = [];
 
-  //   // Iterate over every field item and build a renderable array
-  //   // (I call them rarray for short) for each item.
-  //   foreach ($items as $delta => $item) {
+    $build = [];
 
-  //     $build = array();
+    $build['year'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('school_year__name'),
+      ),
+      'label' => array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('field__label'),
+        ),
+        '#markup' => t('School year'),
+      ),
+      'value' => array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('field__item'),
+        ),
+        // We use #plain_text instead of #markup to prevent XSS.
+        // plain_text will clean up the burrito name and render an
+        // HTML entity encoded string to prevent bad-guys from
+        // injecting JavaScript.
+        '#plain_text' => $item->year,
+      ),
+    );
 
-  //     // Render burrito name. Nothing fancy as such.
-  //     // We build a "container" element, within which we render
-  //     // 2 child elements: one, the label of the property (Name);
-  //     // two, the value of the property (The name of the burrito
-  //     // as entered by the user).
-  //     $build['name'] = array(
-  //       '#type' => 'container',
-  //       '#attributes' => array(
-  //         'class' => array('burrito__name'),
-  //       ),
-  //       'label' => array(
-  //         '#type' => 'container',
-  //         '#attributes' => array(
-  //           'class' => array('field__label'),
-  //         ),
-  //         '#markup' => t('Name'),
-  //       ),
-  //       'value' => array(
-  //         '#type' => 'container',
-  //         '#attributes' => array(
-  //           'class' => array('field__item'),
-  //         ),
-  //         // We use #plain_text instead of #markup to prevent XSS.
-  //         // plain_text will clean up the burrito name and render an
-  //         // HTML entity encoded string to prevent bad-guys from
-  //         // injecting JavaScript.
-  //         '#plain_text' => $item->name,
-  //       ),
-  //     );
 
-  //     // Render toppings (or ingredients) for the burrito.
-  //     // Here as well, we follow the same format as above.
-  //     // We build a container, within which, we render the property
-  //     // label (Toppings) and the actual values for the toppings
-  //     // as per configuration.
-  //     $toppings_format = $this->getSetting('toppings');
-  //     $build['toppings'] = array(
-  //       '#type' => 'container',
-  //       '#attributes' => array(
-  //         'class' => array('burrito__toppings'),
-  //       ),
-  //       'label' => array(
-  //         '#type' => 'container',
-  //         '#attributes' => array(
-  //           'class' => array('field__label'),
-  //         ),
-  //         '#markup' => t('Toppings'),
-  //       ),
-  //       'value' => array(
-  //         '#type' => 'container',
-  //         '#attributes' => array(
-  //           'class' => array('field__item'),
-  //         ),
-  //         // The buildToppings method takes responsibility of generating
-  //         // markup for burrito toppings as per the format set in field
-  //         // configuration. We use $this->getSetting('toppings') above to
-  //         // read the configuration.
-  //         'text' => $this->buildToppings($toppings_format, $item),
-  //       ),
-  //     );
+    // return $output;
+    return $build;
 
-  //     $output[$delta] = $build;
-
-  //   }
-
-  //   return $output;
-
-  // }
+  }
 
   // /**
   //  * Builds a renderable array or string of toppings.
