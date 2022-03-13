@@ -1,0 +1,9 @@
+# Package info
+type: module
+name: School Year Field
+description: Custom field for school years.
+core: 8.x
+
+# Dependencies
+dependences:
+  - field
