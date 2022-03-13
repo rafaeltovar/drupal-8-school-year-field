@@ -20,6 +20,7 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
 
+  const SEPARATOR = "/";
   /**
    * {@inheritdoc}
    */
@@ -100,7 +101,7 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     $school = "";
     while($school != $final) {
       $next = $start + 1;
-      $school = sprintf("%s-%s", $start, $next);
+      $school = sprintf("%s%s%s", $start, self::SEPARATOR, $next);
       $values[$school] = $school;
       $start = $next; 
     }
@@ -113,7 +114,7 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     $year = intval(date('Y'));
     $nextYear = $year + 1;
 
-    return sprintf("%s-%s", $year, $nextYear);
+    return sprintf("%s%s%s", $year, self::SEPARATOR, $nextYear);
   }
 
   // /**
