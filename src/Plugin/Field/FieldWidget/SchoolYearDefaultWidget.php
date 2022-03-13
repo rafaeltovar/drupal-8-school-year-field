@@ -96,7 +96,7 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     $start = $this->getFieldSetting('start_year');
     $final = $this->currentSchoolYear();
 
-    $values = [];
+    $values = [0 => ""];
     $school = "";
     while($school != $final) {
       $next = $start + 1;
