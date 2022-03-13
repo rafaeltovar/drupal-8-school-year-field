@@ -1,0 +1,17 @@
+{
+    "name": "rafaeltovar/drupal-8-school-year-field",
+    "description": "Drupal 8/9 school year field",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Drupal\\school_year_field\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rafael Tovar",
+            "email": "hola@rafaeltovar.info"
+        }
+    ],
+    "require": {}
+}
