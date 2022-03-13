@@ -89,34 +89,38 @@ class SchoolYearDefaultFormatter extends FormatterBase {
 
     $build = [];
 
-    $build['year'] = array(
-      '#type' => 'container',
-      '#attributes' => array(
-        'class' => array('school_year__name'),
-      ),
-      'label' => array(
+    // Iterate over every field item and build a renderable array
+    // (I call them rarray for short) for each item.
+    foreach ($items as $delta => $item) {
+      $build['year'] = array(
         '#type' => 'container',
         '#attributes' => array(
-          'class' => array('field__label'),
+          'class' => array('school_year__name'),
         ),
-        '#markup' => t('School year'),
-      ),
-      'value' => array(
-        '#type' => 'container',
-        '#attributes' => array(
-          'class' => array('field__item'),
+        'label' => array(
+          '#type' => 'container',
+          '#attributes' => array(
+            'class' => array('field__label'),
+          ),
+          '#markup' => t('School year'),
         ),
-        // We use #plain_text instead of #markup to prevent XSS.
-        // plain_text will clean up the burrito name and render an
-        // HTML entity encoded string to prevent bad-guys from
-        // injecting JavaScript.
-        '#plain_text' => $item->year,
-      ),
-    );
+        'value' => array(
+          '#type' => 'container',
+          '#attributes' => array(
+            'class' => array('field__item'),
+          ),
+          // We use #plain_text instead of #markup to prevent XSS.
+          // plain_text will clean up the burrito name and render an
+          // HTML entity encoded string to prevent bad-guys from
+          // injecting JavaScript.
+          '#plain_text' => $item->year,
+        ),
+      );
 
+      $output[$delta] = $build;
+    }
 
-    // return $output;
-    return $build;
+    return $output;
 
   }
 
