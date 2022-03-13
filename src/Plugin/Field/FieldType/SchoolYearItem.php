@@ -67,11 +67,10 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
     // module_load_include('inc', 'burrito_maker');
 
     // $properties['value'] = DataDefinition::create('string');
-
   
     $properties = [
       'year' => DataDefinition::create('string')
-                ->setLabel(t('Name'))
+                ->setLabel(t('School year'))
                 ->setRequired(FALSE)
     ];
 
@@ -82,7 +81,7 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
     //     ->setLabel($topping_name);
     // }
 
-    // return $properties;
+    return $properties;
 
   }
 
