@@ -87,15 +87,14 @@ class SchoolYearDefaultFormatter extends FormatterBase {
 
     $output = [];
 
-    $build = [];
-
     // Iterate over every field item and build a renderable array
     // (I call them rarray for short) for each item.
     foreach ($items as $delta => $item) {
+      $build = [];
       $build['year'] = array(
         '#type' => 'container',
         '#attributes' => array(
-          'class' => array('school_year__name'),
+          'class' => array('school_year__year'),
         ),
         'label' => array(
           '#type' => 'container',
@@ -109,10 +108,6 @@ class SchoolYearDefaultFormatter extends FormatterBase {
           '#attributes' => array(
             'class' => array('field__item'),
           ),
-          // We use #plain_text instead of #markup to prevent XSS.
-          // plain_text will clean up the burrito name and render an
-          // HTML entity encoded string to prevent bad-guys from
-          // injecting JavaScript.
           '#plain_text' => $item->year,
         ),
       );

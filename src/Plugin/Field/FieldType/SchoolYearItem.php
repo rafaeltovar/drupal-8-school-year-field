@@ -90,7 +90,7 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
    * {@inheritdoc}
    */
   public function isEmpty() {
-    $value = $this->get('source_code')->getValue();
+    $value = $this->get('year')->getValue();
     return $value === NULL || $value === '';
   }
 
