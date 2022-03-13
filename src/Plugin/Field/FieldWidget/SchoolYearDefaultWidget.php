@@ -32,6 +32,15 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     // $item is where the current saved values are stored.
     $item =& $items[$delta];
 
+    $element['value'] = $element + [
+      '#type' => 'select',
+      '#default_value' => $items[$delta]->value ?? NULL,
+      '#placeholder' => $this->getSetting('placeholder'),
+      '#options' => $this->getOptions(),
+    ];
+    
+    return $element;
+
     // $element is already populated with #title, #description, #delta,
     // #required, #field_parents, etc.
     //
@@ -47,7 +56,7 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     $element['year'] = [
       '#title' => t('School year'),
       '#type' => 'select',
-      '#options' => $this->getOptions(),
+      
       '#default_value' => '',
     ];
 
@@ -97,16 +106,18 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     $start = $this->getFieldSetting('start_year');
     $final = $this->currentSchoolYear();
 
-    $values = [0 => ""];
+    
     $school = "";
+    $values = [];
     while($school != $final) {
       $next = $start + 1;
       $school = sprintf("%s%s%s", $start, self::SEPARATOR, $next);
       $values[$school] = $school;
       $start = $next; 
     }
+    $values[0] = "";
 
-    return $values;
+    return array_reverse($values);
   }
 
   private function currentSchoolYear() : string
