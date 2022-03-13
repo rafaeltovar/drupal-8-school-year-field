@@ -1,7 +1,8 @@
 {
-    "name": "rafaeltovar/drupal-8-school-year-field",
+    "name": "drupal/school-year-field",
     "description": "Drupal 8/9 school year field",
-    "type": "project",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
             "Drupal\\school_year_field\\": "src/"
