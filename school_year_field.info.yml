@@ -1,8 +1,8 @@
 # Package info
 type: module
-name: School Year
+name: School year
 package: Field types
-description: Custom field for school years.
+description: School year field.
 core: 8.x
 core_version_requirement: ^8 || ^9
 

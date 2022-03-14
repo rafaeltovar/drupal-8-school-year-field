@@ -1,5 +1,5 @@
 {
-    "name": "drupal/school-year-field",
+    "name": "rafaeltovar/drupal-8-school-year-field",
     "description": "Drupal 8/9 school year field",
     "type": "drupal-module",
     "license": "GPL-2.0-or-later",

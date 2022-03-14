@@ -27,27 +27,6 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
 
-    // module_load_include('inc', 'burrito_maker');
-
-    // $output = array();
-
-    // // Create basic column for burrito name.
-    // $output['columns']['name'] = array(
-    //   'type' => 'varchar',
-    //   'length' => 255,
-    // );
-
-    // // Make a column for every topping.
-    // $topping_coll = burrito_maker_get_toppings();
-    // foreach ($topping_coll as $topping_key => $topping_name) {
-    //   $output['columns'][$topping_key] = array(
-    //     'type' => 'int',
-    //     'length' => 1,
-    //   );
-    // }
-
-    // return $output;
-
     return [
       'columns' => [
         'year' => [
@@ -63,23 +42,12 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
-
-    // module_load_include('inc', 'burrito_maker');
-
-    // $properties['value'] = DataDefinition::create('string');
   
     $properties = [
       'year' => DataDefinition::create('string')
                 ->setLabel(t('School year'))
                 ->setRequired(FALSE)
     ];
-
-    // return $properties;
-    // $topping_coll = burrito_maker_get_toppings();
-    // foreach ($topping_coll as $topping_key => $topping_name) {
-    //   $properties[$topping_key] = DataDefinition::create('boolean')
-    //     ->setLabel($topping_name);
-    // }
 
     return $properties;
 
@@ -110,7 +78,7 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
     $output['start_year'] = array(
       '#type' => 'textfield',
       '#title' => t('Start year'),
-      '#default_value' => $this->currentYear(),
+      '#default_value' => $this->getSetting('start_year'),
     );
     return $output;
   }
@@ -118,27 +86,5 @@ class SchoolYearItem extends FieldItemBase implements FieldItemInterface {
   private static function currentYear() : int {
     return intval(date("Y"));
   }
-
-  // /**
-  //  * Returns an array of toppings assigned to the burrito.
-  //  *
-  //  * @return array
-  //  *   An associative array of all toppings assigned to the burrito.
-  //  */
-  // public function getToppings() {
-
-  //   module_load_include('inc', 'burrito_maker');
-
-  //   $output = array();
-
-  //   foreach (burrito_maker_get_toppings() as $topping_key => $topping_name) {
-  //     if ($this->$topping_key) {
-  //       $output[$topping_key] = $topping_name;
-  //     }
-  //   }
-
-  //   return $output;
-
-  // }
 
 }
