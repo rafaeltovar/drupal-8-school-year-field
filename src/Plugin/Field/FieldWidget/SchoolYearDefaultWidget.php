@@ -49,13 +49,13 @@ class SchoolYearDefaultWidget extends WidgetBase implements WidgetInterface {
     while($school != $final) {
       $next = $start + 1;
       $school = sprintf("%s%s%s", $start, self::SEPARATOR, $next);
-      $key = sprintf("%s%s", $start, $next);
+      $key = sprintf("Y%s%s", $start, $next);
       $values[$key] = $school;
       $start = $next; 
     }
     $values[0] = "";
 
-    return array_reverse($values);
+    return array_reverse($values, true);
   }
 
   private function currentSchoolYear() : string
